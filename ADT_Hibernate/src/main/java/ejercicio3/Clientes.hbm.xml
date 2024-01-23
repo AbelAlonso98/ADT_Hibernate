@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 23 ene 2024 23:29:07 by Hibernate Tools 6.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="hibernateexercises" name="ejercicio3.Clientes" optimistic-lock="none" table="clientes">
+        <id name="id" type="byte">
+            <column name="ID"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="nombre" type="string">
+            <column length="50" name="NOMBRE" not-null="true"/>
+        </property>
+        <property name="direccion" type="string">
+            <column length="50" name="DIRECCION"/>
+        </property>
+        <property name="poblacion" type="string">
+            <column length="50" name="POBLACION"/>
+        </property>
+        <property name="telef" type="string">
+            <column length="20" name="TELEF"/>
+        </property>
+        <property name="nif" type="string">
+            <column length="10" name="NIF"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="ventases" table="ventas">
+            <key>
+                <column name="IDCLIENTE" not-null="true"/>
+            </key>
+            <one-to-many class="ejercicio3.Ventas"/>
+        </set>
+    </class>
+</hibernate-mapping>
