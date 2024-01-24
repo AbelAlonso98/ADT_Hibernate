@@ -43,6 +43,7 @@ public class Ejercicio5 {
 		q2.setParameter("cliente", clientes.get(0));
 		List<Ventas> ventas = q2.list();
 		
+
 		// Creo dos variables para calcular el precio e ir acumulandolo
 		BigDecimal importeAcumulado = new BigDecimal(0);
 		BigDecimal importe = new BigDecimal(0);
@@ -50,12 +51,12 @@ public class Ejercicio5 {
 		// Recorro las ventas mostrando por pantalla lo necesario
 		for(Ventas v: ventas) {
 			System.out.printf("Venta: %d ** %s%n", v.getIdventa(), v.getFechaventa());
-			System.out.printf("\t Producto: %s%n", v.getProductos().getDescripcion());
+			System.out.printf("\tProducto: %s%n", v.getProductos().getDescripcion());
 			// PVP ES UN BIGDECIMAL ????????????????????????????
-			System.out.printf("\t Cantidad: %s ** PVP: %s%n", v.getCantidad(), v.getProductos().getPvp().toString());
+			System.out.printf("\tCantidad: %s ** PVP: %s €%n", v.getCantidad(), v.getProductos().getPvp().toString());
 			importe = v.getProductos().getPvp().multiply(new BigDecimal(v.getCantidad()));
 			importeAcumulado = importeAcumulado.add(importe);
-			System.out.printf("\t Importe: %s €%n", importe.toString());
+			System.out.printf("\tImporte: %s €%n", importe.toString());
 		}
 		
 		// Imprimo el "resumen"
