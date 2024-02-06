@@ -15,13 +15,13 @@ public class Clientes implements java.io.Serializable {
 	private String poblacion;
 	private String telef;
 	private String nif;
-	private Set ventases = new HashSet(0);
+	private Set<Ventas> ventases = new HashSet<Ventas>(0);
 
 	public Clientes() {
 	}
 
 	public Clientes(byte id, String nombre, String direccion, String poblacion, String telef, String nif,
-			Set ventases) {
+			Set<Ventas> ventases) {
 		this.id = id;
 		this.nombre = nombre;
 		this.direccion = direccion;
@@ -79,12 +79,14 @@ public class Clientes implements java.io.Serializable {
 		this.nif = nif;
 	}
 
-	public Set getVentases() {
+	public Set<Ventas> getVentases() {
 		return this.ventases;
 	}
 
-	public void setVentases(Set ventases) {
+	public void setVentases(Set<Ventas> ventases) {
 		this.ventases = ventases;
 	}
+	
+
 
 }
