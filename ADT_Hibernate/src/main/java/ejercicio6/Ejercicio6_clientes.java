@@ -3,8 +3,8 @@ package ejercicio6;
 import org.hibernate.Session;
 import org.hibernate.exception.ConstraintViolationException;
 
-import ejercicio3.Clientes;
 import jakarta.persistence.PersistenceException;
+import mappedClasses.Clientes;
 import tools.HibernateUtil;
 
 public class Ejercicio6_clientes {

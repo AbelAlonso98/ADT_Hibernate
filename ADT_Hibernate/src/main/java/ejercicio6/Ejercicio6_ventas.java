@@ -13,10 +13,10 @@ import org.hibernate.Session;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
 
-import ejercicio3.Clientes;
-import ejercicio3.Productos;
-import ejercicio3.Ventas;
 import jakarta.persistence.PersistenceException;
+import mappedClasses.Clientes;
+import mappedClasses.Productos;
+import mappedClasses.Ventas;
 import tools.HibernateUtil;
 
 public class Ejercicio6_ventas {
@@ -33,7 +33,7 @@ public class Ejercicio6_ventas {
 			int id = Integer.parseInt(in.readLine());
 
 			Query<Productos> q3 = session.createQuery("from Ventas where idventa = :id",
-					ejercicio3.Productos.class);
+					Productos.class);
 			q3.setParameter("id", id);
 			List<Productos> resVent = q3.list();
 			if (resVent.size() > 0) {
@@ -45,7 +45,7 @@ public class Ejercicio6_ventas {
 			System.out.println("Introduce nombre del producto a vender");
 			String productName = in.readLine();
 			Query<Productos> q1 = session.createQuery("from Productos where descripcion = :descripcion",
-					ejercicio3.Productos.class);
+					Productos.class);
 			q1.setParameter("descripcion", productName);
 			List<Productos> resProd = q1.list();
 			if (resProd.size() < 1) {
@@ -64,7 +64,7 @@ public class Ejercicio6_ventas {
 			}
 			System.out.println("Introduce nombre del cliente");
 			String clientName = in.readLine();
-			Query<Clientes> q2 = session.createQuery("from Clientes where nombre = :nombre", ejercicio3.Clientes.class);
+			Query<Clientes> q2 = session.createQuery("from Clientes where nombre = :nombre", Clientes.class);
 			q2.setParameter("nombre", clientName);
 			List<Clientes> resCli = q2.list();
 			if (resCli.size() < 1) {

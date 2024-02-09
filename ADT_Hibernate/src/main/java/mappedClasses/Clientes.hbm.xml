@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 24 ene 2024 12:28:40 by Hibernate Tools 6.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 feb 2024 13:32:47 by Hibernate Tools 6.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class catalog="hibernateexercises" name="ejercicio3.Clientes" optimistic-lock="none" table="clientes">
+    <class catalog="hibernateexercises" name="mappedClasses.Clientes" optimistic-lock="none" table="clientes">
         <id name="id" type="byte">
             <column name="ID"/>
             <generator class="assigned"/>
@@ -25,7 +25,7 @@
             <key>
                 <column name="IDCLIENTE" not-null="true"/>
             </key>
-            <one-to-many class="ejercicio3.Ventas"/>
+            <one-to-many class="mappedClasses.Ventas"/>
         </set>
     </class>
 </hibernate-mapping>

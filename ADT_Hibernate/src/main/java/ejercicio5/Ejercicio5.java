@@ -6,8 +6,8 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import ejercicio3.Clientes;
-import ejercicio3.Ventas;
+import mappedClasses.Clientes;
+import mappedClasses.Ventas;
 import tools.HibernateUtil;
 
 public class Ejercicio5 {
@@ -25,7 +25,7 @@ public class Ejercicio5 {
 		System.out.println("------------------------------------------");
 		
 		// Obtenemos el objeto cliente de la base de datos partiendo del nombre que recibimos por args
-		Query<Clientes> q1 = session.createQuery("from Clientes where nombre = :nombre", ejercicio3.Clientes.class);
+		Query<Clientes> q1 = session.createQuery("from Clientes where nombre = :nombre", Clientes.class);
 		q1.setParameter("nombre", args[0]);
 		List<Clientes> clientes = q1.list();
 		if(clientes.size()>1) {

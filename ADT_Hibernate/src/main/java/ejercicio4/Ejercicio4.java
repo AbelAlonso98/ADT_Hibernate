@@ -4,6 +4,8 @@ import org.hibernate.Session;
 
 import tools.HibernateUtil;
 
+import mappedClasses.*;
+
 public class Ejercicio4 {
 	public static void main(String[] args) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -15,8 +17,7 @@ public class Ejercicio4 {
 		// para ello se ha generado el metodo toString() en la clase Empleados, de no hacerlo, imprimiria
 		// la referencia en memoria del objeto.
 		session.createQuery("from Empleados where empNo = 7369", Empleados.class).list().forEach(
-				t -> System.out.println(t.toString()));
-		session.getTransaction().commit();
+				t -> System.out.println(t.getApellido()));
 	}
 	
 	

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 24 ene 2024 0:24:56 by Hibernate Tools 6.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 feb 2024 13:32:47 by Hibernate Tools 6.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class catalog="hibernateexercises" name="ejercicio4.Departamentos" optimistic-lock="none" table="departamentos">
+    <class catalog="hibernateexercises" name="mappedClasses.Departamentos" optimistic-lock="none" table="departamentos">
         <id name="deptNo" type="byte">
             <column name="dept_no"/>
             <generator class="assigned"/>

@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 import org.hibernate.Session;
 import org.hibernate.exception.ConstraintViolationException;
 
-import ejercicio3.Productos;
 import jakarta.persistence.PersistenceException;
+import mappedClasses.Productos;
 import tools.HibernateUtil;
 
 public class Ejercicio6_productos {

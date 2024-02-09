@@ -3,6 +3,8 @@
 
 <hibernate-reverse-engineering>
   <table-filter match-catalog="hibernateexercises" match-name="clientes"/>
+  <table-filter match-catalog="hibernateexercises" match-name="departamentos"/>
+  <table-filter match-catalog="hibernateexercises" match-name="empleados"/>
   <table-filter match-catalog="hibernateexercises" match-name="productos"/>
   <table-filter match-catalog="hibernateexercises" match-name="ventas"/>
 </hibernate-reverse-engineering>

@@ -1,5 +1,5 @@
-package ejercicio3;
-// Generated 24 ene 2024 12:28:39 by Hibernate Tools 6.3.1.Final
+package mappedClasses;
+// Generated 9 feb 2024 13:32:47 by Hibernate Tools 6.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -86,7 +86,5 @@ public class Clientes implements java.io.Serializable {
 	public void setVentases(Set<Ventas> ventases) {
 		this.ventases = ventases;
 	}
-	
-
 
 }
