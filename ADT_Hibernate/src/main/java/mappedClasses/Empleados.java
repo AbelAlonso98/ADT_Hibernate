@@ -8,6 +8,10 @@ import java.sql.Date;
  */
 public class Empleados implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7646622057420459427L;
 	private int empNo;
 	private String apellido;
 	private String oficio;

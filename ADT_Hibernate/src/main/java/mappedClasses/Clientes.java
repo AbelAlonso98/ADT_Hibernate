@@ -9,6 +9,10 @@ import java.util.Set;
  */
 public class Clientes implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7828325573911122521L;
 	private byte id;
 	private String nombre;
 	private String direccion;

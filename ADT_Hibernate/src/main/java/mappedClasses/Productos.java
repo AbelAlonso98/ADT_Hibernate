@@ -10,18 +10,22 @@ import java.util.Set;
  */
 public class Productos implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2353707857652077406L;
 	private int id;
 	private String descripcion;
 	private Integer stockactual;
 	private Integer stockminimo;
 	private BigDecimal pvp;
-	private Set ventases = new HashSet(0);
+	private Set<Ventas> ventases = new HashSet<Ventas>(0);
 
 	public Productos() {
 	}
 
 	public Productos(int id, String descripcion, Integer stockactual, Integer stockminimo, BigDecimal pvp,
-			Set ventases) {
+			Set<Ventas> ventases) {
 		this.id = id;
 		this.descripcion = descripcion;
 		this.stockactual = stockactual;
@@ -70,11 +74,11 @@ public class Productos implements java.io.Serializable {
 		this.pvp = pvp;
 	}
 
-	public Set getVentases() {
+	public Set<Ventas> getVentases() {
 		return this.ventases;
 	}
 
-	public void setVentases(Set ventases) {
+	public void setVentases(Set<Ventas> ventases) {
 		this.ventases = ventases;
 	}
 

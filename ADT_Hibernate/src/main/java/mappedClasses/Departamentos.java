@@ -6,6 +6,10 @@ package mappedClasses;
  */
 public class Departamentos implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2249119385915570663L;
 	private byte deptNo;
 	private String dnombre;
 	private String loc;

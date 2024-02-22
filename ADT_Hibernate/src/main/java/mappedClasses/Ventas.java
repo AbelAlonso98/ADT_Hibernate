@@ -8,6 +8,10 @@ import java.sql.Date;
  */
 public class Ventas implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1479471689539565517L;
 	private short idventa;
 	private Productos productos;
 	private Clientes clientes;
