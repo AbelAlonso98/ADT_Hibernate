@@ -52,7 +52,9 @@ public class Ejercicio5_18 {
 					availableCollections();
 					break;
 				case "json":
-					createJSONfromCollection(command.split(" ")[1]);
+					System.out.printf("Write a path for the file: %s.json. It should end with \\%n", command.split(" ")[1]);
+					System.out.println("F.E.: C:\\Users\\YourUser\\Desktop\\");
+					createJSONfromCollection(command.split(" ")[1], in.readLine());
 					break;
 				case "inc":
 					increaseSalarioEmpleados();
@@ -118,12 +120,12 @@ public class Ejercicio5_18 {
 		return d;
 	}
 
-	private static void createJSONfromCollection(String c) {
-		MongoCollection<Document> collection = db.getCollection(c);
+	private static void createJSONfromCollection(String collectionName, String path) {
+		MongoCollection<Document> collection = db.getCollection(collectionName);
 		FindIterable<Document> cursor = collection.find();
 		MongoCursor<Document> iterator = cursor.cursor();
-		try (FileWriter out = new FileWriter("C:\\Users\\Abel Alonso\\Desktop\\Entrega ADT\\" + c + ".json")) {
-			out.write("{\"" + c + "\": [\n");
+		try (FileWriter out = new FileWriter(path + collectionName + ".json")) {
+			out.write("{\"" + collectionName + "\": [\n");
 			while (iterator.hasNext()) {
 				out.write(iterator.next().toJson());
 				if (iterator.hasNext())
