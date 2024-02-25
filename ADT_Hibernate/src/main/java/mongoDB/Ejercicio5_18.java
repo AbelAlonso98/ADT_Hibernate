@@ -1,7 +1,9 @@
 package mongoDB;
 
+import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import org.bson.Document;
@@ -26,17 +28,58 @@ public class Ejercicio5_18 {
 
 	public static void main(String[] args) {
 
-		showColection("libros");
-		createJSONfromCollection("libros");
+		System.out.println(
+				"The entire exercise is splitted in methods, for testing you should execute them all separately:");
+		System.out.println("\tIf you want to load Empleados(MySQL) into MongoDB write: load");
+		System.out.println("\tFirst method (showCollection) write: show nameOfCollection");
+		System.out.println("\t\t If you want to see all collections available write: collections");
+		System.out.println("\tSecond method (createJSONfromCollection) write: json nameOfCollection");
+		System.out.println("\tThird method (increaseSalarioEmpleados) write: inc");
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		String command = "";
+		while (true) {
+			System.out.print(">");
+			try {
+				command = in.readLine();
+				switch (command.split(" ")[0]) {
+				case "load":
+					insertEmpleadosFromMySQL();
+					break;
+				case "show":
+					showColection(command.split(" ")[1]);
+					break;
+				case "collections":
+					availableCollections();
+					break;
+				case "json":
+					createJSONfromCollection(command.split(" ")[1]);
+					break;
+				case "inc":
+					increaseSalarioEmpleados();
+					break;
+				default:
+					System.err.println("UNKNOWN COMMAND");
+					break;
+				}
+			} catch (IOException e) {
+				System.err.println("IN/OUT ERROR.");
+				e.printStackTrace();
+			}
+		}
 
 	}
 
 	private static void showColection(String name) {
 		MongoCollection<Document> collection = db.getCollection(name);
-		FindIterable<Document> cursor = collection.find();
-		MongoCursor<Document> iterator = cursor.cursor();
-		while (iterator.hasNext()) {
-			System.out.println(iterator.next());
+		if (collection.estimatedDocumentCount() == 0)
+			System.out.println("This collection does not exists or is empty");
+		else {
+			FindIterable<Document> cursor = collection.find();
+			MongoCursor<Document> iterator = cursor.cursor();
+
+			while (iterator.hasNext()) {
+				System.out.println(iterator.next());
+			}
 		}
 	}
 
@@ -53,10 +96,10 @@ public class Ejercicio5_18 {
 		session.close();
 	}
 
-	private static void insertDocument(String c, Document d) {
+	private static void insertDocument(String collection, Document d) {
 		try {
-			MongoCollection<Document> collection = db.getCollection(c);
-			collection.insertOne(d);
+			MongoCollection<Document> c = db.getCollection(collection);
+			c.insertOne(d);
 		} catch (MongoWriteException e) { // important to catch it
 			System.err.printf("A document with _id: %s already exists%n", d.get("_id"));
 		}
@@ -94,7 +137,30 @@ public class Ejercicio5_18 {
 	}
 
 	private static void increaseSalarioEmpleados() {
+		System.out.println("=========================EMPLEADOS BEFORE RAISE:=========================");
+		showEmpleados();
+		MongoCollection<Document> collection = db.getCollection("empleadosmysql");
+		Document filter = new Document("oficio", "EMPLEADO");
+		Document change = new Document("salario", 100);
+		Document updateQuery = new Document("$inc", change);
+		collection.updateMany(filter, updateQuery);
+		System.out.println("\n\n=========================EMPLEADOS AFTER RAISE:=========================");
+		showEmpleados();
 
+	}
+
+	private static void showEmpleados() {
+		MongoCollection<Document> collection = db.getCollection("empleadosmysql");
+		Document query2 = new Document("oficio", "EMPLEADO");
+		FindIterable<Document> cursor = collection.find(query2);
+		MongoCursor<Document> iterator = cursor.cursor();
+		while (iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}
+	}
+	
+	private static void availableCollections() {
+		db.listCollectionNames().forEach(System.out::println);
 	}
 
 }
